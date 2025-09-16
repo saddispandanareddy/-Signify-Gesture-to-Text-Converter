@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="Find answers to Frequently Asked Questions (FAQ) about the Signify gesture translation application.">
+    <title>FAQ - Signify</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>">
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="index.html">Signify 👋</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="learn.html" class="nav-link">Learn ASL</a></li>
+                <li><a href="practice.html" class="nav-link">Practice</a></li>
+                <li><a href="tutorial.html" class="nav-link">How it Works</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <!-- Account Dropdown -->
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="account-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Account</a>
+                    <ul class="dropdown-menu" aria-labelledby="account-dropdown-toggle">
+                        <li id="login-dropdown-item"><a href="login.html" class="dropdown-item">Login</a></li>
+                        <li id="register-dropdown-item"><a href="register.html" class="dropdown-item">Register</a></li>
+                        <li id="logout-dropdown-item" style="display: none;"><button id="logout-button" class="nav-button dropdown-item">Logout</button></li>
+                    </ul>
+                </li>
+                 <li> <!-- Dark Mode Toggle Button -->
+                    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-pressed="false">🌙 Dark Mode</button>
+                </li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        </nav>
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Main Content ======= -->
+    <main class="content-wrapper">
+        <h1>Frequently Asked Questions (FAQ)</h1>
+        <p>Find answers to common questions about using Signify.</p>
+
+        <section class="page-section faq-list">
+            <h2>General Questions</h2>
+            <details>
+                <summary>What is Signify?</summary>
+                <p>Signify is a web-based application designed to translate hand gestures, focusing initially on American Sign Language (ASL) letters and common signs, into text in real-time. It uses your device's webcam and computer vision algorithms running directly in your browser.</p>
+            </details>
+            <details>
+                <summary>Who is Signify for?</summary>
+                <p>Signify aims to be useful for several groups: individuals learning ASL, people who want a quick way to communicate a signed concept into text, educators, and anyone interested in the intersection of sign language and technology. It is NOT intended to replace professional interpreters.</p>
+            </details>
+             <details>
+                <summary>Is Signify free?</summary>
+                <p>Yes, the core functionality of Signify is currently offered free of charge. Future premium features might be considered, but basic translation and learning tools will remain accessible.</p>
+            </details>
+            <details>
+                <summary>Do I need to install any software?</summary>
+                <p>No! Signify runs entirely in your web browser (like Chrome, Firefox, Edge, Safari). All you need is an internet connection (initially to load the page) and a working webcam connected to your device.</p>
+            </details>
+        </section>
+
+        <section class="page-section faq-list">
+            <h2>Using the Application</h2>
+            <details>
+                <summary>How do I start translating gestures?</summary>
+                <p>Go to the <a href="index.html">Home page</a>. If prompted, click the button or link to grant camera access. Once your webcam feed appears, position your hand clearly and make a supported sign. The translated text should appear in the output box.</p>
+            </details>
+             <details>
+                <summary>The camera isn't working or access was denied. What should I do?</summary>
+                <p>First, ensure your webcam is properly connected and not being used by another program (e.g., Zoom, Skype). Then, check your browser's settings: find the Site Settings for this website and ensure Camera access is set to "Allow". You might need to refresh the page after changing permissions. If problems persist, try a different browser or check if your webcam drivers are up to date.</p>
+            </details>
+            <details>
+                <summary>What specific gestures does Signify recognize?</summary>
+                <p>Currently, Signify aims to recognize the standard ASL alphabet (fingerspelling) and a growing list of common words and phrases (like Hello, Thank You, Okay, Yes, No, I Love You). You can ask the chatbot "List available gestures" for a summary, or explore the <a href="learn.html">Learn ASL</a> page.</p>
+            </details>
+            <details>
+                <summary>How accurate is the gesture recognition?</summary>
+                <p>Accuracy depends heavily on factors like lighting conditions, background clarity, camera quality, and how clearly the sign is made. The underlying technology is constantly improving, but recognition might not be perfect, especially for complex or fast signs. See the <a href="tutorial.html">How it Works</a> page for tips.</p>
+            </details>
+            <details>
+                <summary>How does the Practice Mode work?</summary>
+                <p>Navigate to the <a href="practice.html">Practice page</a>. Allow camera access. The page will display a "Target Gesture." Try making that sign with your hand in the webcam feed. The "Feedback" area aims to tell you if you successfully matched the target (requires ML model integration). Use "Next Gesture" to cycle through signs.</p>
+            </details>
+              <details>
+                <summary>Can I add my own custom gestures?</summary>
+                <p>This feature is planned for future development but is not available in the current version. The goal is to allow users to record their own signs and map them to custom text messages.</p>
+            </details>
+        </section>
+
+        <section class="page-section faq-list">
+            <h2>Privacy & Security</h2>
+             <details>
+                <summary>Is my webcam video sent to a server or stored?</summary>
+                <p><strong>No.</strong> A core principle of Signify's design is client-side processing. The video feed from your webcam is processed directly within *your* web browser using TensorFlow.js/MediaPipe. Your live video data is **not** transmitted to our servers or stored anywhere persistently for the purpose of translation. It is processed locally in real-time.</p>
+            </details>
+             <details>
+                <summary>What data is collected?</summary>
+                <p>For basic usage without login, Signify does not collect personally identifiable information from the video feed. If you use the login/register feature (currently simulation only), the simulated credentials (email/username/password) are stored insecurely in your browser's `localStorage`. A production version would require a secure backend and a clear privacy policy outlining data handling for registered users.</p>
+            </details>
+            <details>
+                <summary>Is the login system secure?</summary>
+                <p><strong>No. The current login/registration feature is a non-secure simulation using `localStorage`.</strong> It is strictly for demonstrating the potential UI flow. DO NOT use real passwords or sensitive information with this demo system. A real application requires a secure backend database and proper authentication protocols (like hashing passwords).</p>
+            </details>
+        </section>
+
+          <section class="page-section">
+             <h2>Troubleshooting</h2>
+             <p>If you encounter issues:</p>
+             <ul>
+                 <li>Try refreshing the page (Ctrl+R or Cmd+R).</li>
+                 <li>Ensure your browser is up-to-date.</li>
+                 <li>Clear your browser's cache and cookies for this site.</li>
+                 <li>Verify camera permissions in browser settings.</li>
+                 <li>Try disabling browser extensions temporarily.</li>
+                 <li>If problems persist, use the chatbot to describe the issue or check the About page for contact info (if available).</li>
+             </ul>
+        </section>
+
+    </main>
+    <!-- End Main Content -->
+
+   <!-- ======= Chatbot ======= -->
+    <aside class="chatbot-container">
+        <button id="chatbot-toggle" aria-label="Toggle Chatbot" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+        </button>
+        <div id="chatbot-window" class="chatbot-window" role="log" aria-live="polite">
+            <div class="chatbot-header">
+                <span>Signify Assistant</span>
+                <button id="chatbot-close" aria-label="Close Chatbot">&times;</button>
+            </div>
+            <div id="chatbot-messages" class="chatbot-messages">
+                <div class="message bot-message">Have questions? Check the FAQ list above or ask me directly! For example: "Is my video stored?" or "How accurate is it?".</div>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbot-input" placeholder="Ask your question..." aria-label="Chat input">
+                <button id="chatbot-send" aria-label="Send message">Send</button>
+            </div>
+        </div>
+    </aside>
+    <!-- End Chatbot -->
+
+    <!-- ======= Footer ======= -->
+    <footer>
+        <p>&copy; <span id="current-year"></span> Signify Project. All rights reserved.</p>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- ======= Scripts ======= -->
+    <script src="auth.js" defer></script>
+    <script src="script.js" defer></script>
+    <!-- End Scripts -->
+</body>
+</html>

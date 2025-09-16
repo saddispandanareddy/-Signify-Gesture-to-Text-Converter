@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="Practice your ASL gestures with Signify's interactive practice mode. Get real-time feedback (coming soon).">
+    <title>Practice Mode - Signify</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>">
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="index.html">Signify 👋</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="learn.html" class="nav-link">Learn ASL</a></li>
+                <li><a href="practice.html" class="nav-link">Practice</a></li>
+                <li><a href="tutorial.html" class="nav-link">How it Works</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <!-- Account Dropdown -->
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="account-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Account</a>
+                    <ul class="dropdown-menu" aria-labelledby="account-dropdown-toggle">
+                        <li id="login-dropdown-item"><a href="login.html" class="dropdown-item">Login</a></li>
+                        <li id="register-dropdown-item"><a href="register.html" class="dropdown-item">Register</a></li>
+                        <li id="logout-dropdown-item" style="display: none;"><button id="logout-button" class="nav-button dropdown-item">Logout</button></li>
+                    </ul>
+                </li>
+                 <li> <!-- Dark Mode Toggle Button -->
+                    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-pressed="false">🌙 Dark Mode</button>
+                </li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        </nav>
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Main Content ======= -->
+    <main class="content-wrapper">
+        <h1>Gesture Practice</h1>
+        <!-- LOGIN PROMPT SECTION (Initially Hidden by auth.js if logged in) -->
+         <section id="login-prompt-practice" class="login-prompt-section" style="display: none;">
+             <h2>Access Practice Mode</h2>
+             <p>Please log in or register to practice your ASL signs interactively.</p>
+             <div class="prompt-actions">
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+             </div>
+        </section>
+        <p>Challenge yourself! Try making the target gesture shown below in front of your webcam.</p>
+
+        <section id="practice-section" class="page-section" style="display: none;">
+             <div class="content-container practice-layout">
+
+                 <!-- Target Gesture & Controls -->
+                 <div class="practice-controls">
+                    <h3>Target Gesture</h3>
+                    <div id="target-gesture-display" class="target-display" aria-live="polite">
+                        A <!-- Initial placeholder -->
+                    </div>
+                    <p id="target-gesture-name" class="subtle-text">(Target: A)</p>
+                    <button id="next-gesture-button">Next Gesture</button>
+                </div>
+
+                <!-- Webcam Area for Practice -->
+                <div class="webcam-area">
+                    <h3>Your Practice Feed</h3>
+                     <div id="webcam-container">
+                        <video id="webcam-feed" autoplay playsinline aria-label="Webcam Feed for Practice"></video>
+                        <div id="permission-prompt" class="status-message action-prompt" style="display: none;">
+    Grant Camera Permission
+    <button type="button">Allow Access</button> <!-- NO inline style -->
+</div>
+                         <div id="loading-message" class="status-message" style="display: none;">
+                             <div class="spinner"></div> Initializing Webcam...
+                         </div>
+                        <div id="webcam-fallback" class="status-message error-message" style="display: none;">
+                             Webcam access issue.
+                        </div>
+                    </div>
+                     <button id="start-cam-button-practice" style="display:none;">Start Practice Camera</button>
+                </div>
+
+                 <!-- Feedback Area -->
+                <div class="feedback-area">
+                     <h3>Feedback</h3>
+                     <div id="feedback-container" class="output-container">
+                         <p id="practice-feedback" aria-live="polite">Attempt the target gesture...</p>
+                     </div>
+                </div>
+
+            </div>
+             <p class="disclaimer">Note: Real-time feedback requires successful integration of the gesture recognition model.</p>
+        </section>
+    </main>
+    <!-- End Main Content -->
+
+    <!-- ======= Chatbot ======= -->
+    <aside class="chatbot-container">
+        <button id="chatbot-toggle" aria-label="Toggle Chatbot" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+        </button>
+        <div id="chatbot-window" class="chatbot-window" role="log" aria-live="polite">
+            <div class="chatbot-header">
+                <span>Signify Assistant</span>
+                <button id="chatbot-close" aria-label="Close Chatbot">&times;</button>
+            </div>
+            <div id="chatbot-messages" class="chatbot-messages">
+                 <div class="message bot-message">Practicing signs? If you get stuck, ask me "What does [gesture name] mean?" or navigate using "Show Learn Page".</div>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbot-input" placeholder="Ask a question..." aria-label="Chat input">
+                <button id="chatbot-send" aria-label="Send message">Send</button>
+            </div>
+        </div>
+    </aside>
+    <!-- End Chatbot -->
+
+    <!-- ======= Footer ======= -->
+    <footer>
+        <p>&copy; <span id="current-year"></span> Signify Project. All rights reserved.</p>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- ======= Scripts ======= -->
+    <script src="auth.js" defer></script>
+    <script src="script.js" defer></script>
+    <!-- End Scripts -->
+</body>
+</html

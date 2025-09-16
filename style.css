@@ -1,0 +1,1312 @@
+/* --- Global Styles & Variables --- */
+:root {
+    /* Light Mode (Default) */
+    --primary-color: #005f73; /* Teal */
+    --secondary-color: #0a9396; /* Lighter Teal */
+    --accent-color: #ee9b00; /* Orange/Yellow */
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --text-color: #212529;
+    --light-text: #ffffff;
+    --border-color: #dee2e6;
+    --muted-text: #6c757d;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --link-color: var(--secondary-color);
+    --link-hover-color: var(--accent-color);
+    --error-color: #d9534f; /* Red */
+    --success-color: #5cb85c; /* Green */
+    --error-bg: #f8d7da;
+    --success-bg: #d4edda;
+    --error-border: #f5c6cb;
+    --success-border: #c3e6cb;
+    --error-text: #721c24;
+    --success-text: #155724;
+    --input-bg: #ffffff;
+    --input-border: var(--border-color);
+    --chatbot-bg: var(--card-background);
+    --chatbot-header-bg: var(--primary-color);
+    --chatbot-msg-bg: var(--background-color);
+    --chatbot-user-msg-bg: var(--secondary-color);
+
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --spacing-unit: 8px;
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+    --primary-color: #0a9396; /* Lighter Teal becomes primary */
+    --secondary-color: #94d2bd; /* Even Lighter Teal */
+    --accent-color: #fca311; /* Slightly brighter Orange */
+    --background-color: #1a1a1a; /* Dark background */
+    --card-background: #2c2c2c; /* Slightly lighter dark for cards */
+    --text-color: #e0e0e0; /* Light text */
+    --light-text: #f8f9fa; /* Very light text */
+    --border-color: #444444; /* Darker border */
+    --muted-text: #aaaaaa; /* Lighter muted text */
+    --shadow-color: rgba(255, 255, 255, 0.05); /* Subtle light shadow */
+    --link-color: var(--secondary-color);
+    --link-hover-color: var(--accent-color);
+    --error-color: #f5c6cb; /* Lighter red for dark mode */
+    --success-color: #c3e6cb; /* Lighter green */
+    --error-bg: #582123; /* Darker red background */
+    --success-bg: #1c4a25; /* Darker green background */
+    --error-border: #721c24;
+    --success-border: #155724;
+    --error-text: var(--error-color);
+    --success-text: var(--success-color);
+    --input-bg: #333333;
+    --input-border: #555555;
+    --chatbot-bg: #3a3a3a;
+    --chatbot-header-bg: var(--primary-color);
+    --chatbot-msg-bg: #444444;
+    --chatbot-user-msg-bg: var(--secondary-color);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scroll for anchor links where applicable */
+    font-size: 16px; /* Base font size */
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 60px; /* Default height of fixed navbar */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4 {
+    color: var(--primary-color);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    line-height: 1.3;
+}
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.1rem; margin-bottom: var(--spacing-unit); }
+
+p {
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover, a:focus {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+button, .nav-button, .dark-mode-toggle {
+    cursor: pointer;
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    border: none;
+    border-radius: 4px;
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    font-size: 1rem;
+    transition: background-color 0.2s ease, outline 0.2s ease;
+    font-family: inherit;
+    display: inline-block;
+    text-align: center;
+    line-height: 1; /* Ensure text aligns vertically */
+}
+
+.nav-button { /* Style button in nav like a link */
+    background: none;
+    padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 1.5);
+    font-size: inherit; /* Match nav link font size */
+    color: var(--light-text);
+}
+
+button:hover, button:focus,
+.nav-button:hover, .nav-button:focus,
+.dark-mode-toggle:hover, .dark-mode-toggle:focus {
+    background-color: var(--primary-color);
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.nav-button:hover, .nav-button:focus {
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    text-decoration: none;
+    outline-offset: 1px;
+}
+
+/* Dark Mode Toggle specific styling */
+.dark-mode-toggle {
+    background: none;
+    border: 1px solid var(--light-text); /* Visible border */
+    color: var(--light-text);
+    padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+    font-size: 0.8rem; /* Smaller text */
+    margin-left: var(--spacing-unit);
+}
+.dark-mode-toggle:hover, .dark-mode-toggle:focus {
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    outline-offset: 1px;
+}
+
+
+/* --- Navbar --- */
+.navbar {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 0 calc(var(--spacing-unit) * 2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    transition: background-color 0.3s ease;
+}
+
+.nav-logo a {
+    color: var(--light-text);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+.nav-logo a:hover, .nav-logo a:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.nav-menu > li { /* Direct children for top-level items */
+    margin-left: calc(var(--spacing-unit) * 1);
+    position: relative; /* Needed for dropdown positioning */
+}
+
+.nav-menu .nav-link, .nav-menu .nav-button {
+    color: var(--light-text);
+    padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 1.5);
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: block;
+}
+
+.nav-menu .nav-link:hover,
+.nav-menu .nav-link:focus,
+.nav-menu .nav-link.active {
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    text-decoration: none;
+    font-weight: bold;
+}
+.nav-menu .nav-link[aria-current="page"] {
+    font-weight: bold;
+    box-shadow: inset 0 -2px 0 var(--accent-color); /* Underline effect */
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--light-text);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* --- Dropdown Menu Styles --- */
+.dropdown .dropdown-toggle {
+    cursor: pointer; /* Indicate it's clickable/hoverable */
+     display: flex;
+     align-items: center;
+     gap: calc(var(--spacing-unit) * 0.5);
+}
+.dropdown .dropdown-toggle::after { /* Simple caret */
+    content: ' ▼';
+    font-size: 0.7em;
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+}
+.dropdown:hover .dropdown-toggle::after,
+.dropdown:focus-within .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Position below the toggle */
+    right: 0; /* Align to the right edge of the parent li */
+    min-width: 160px;
+    background-color: var(--card-background); /* Use card background */
+    list-style: none;
+    padding: var(--spacing-unit) 0;
+    margin-top: 2px; /* Small gap */
+    border-radius: 4px;
+    box-shadow: 0 3px 8px var(--shadow-color);
+    z-index: 1001; /* Above other nav items */
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+/* Show dropdown on hover/focus */
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    margin: 0;
+    width: 100%;
+}
+.dropdown-menu .dropdown-item,
+.dropdown-menu .nav-button { /* Style dropdown items */
+    display: block;
+    padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+    color: var(--text-color); /* Use main text color */
+    white-space: nowrap;
+    background: none; /* Override nav-button background */
+    text-align: left;
+     width: 100%;
+     border-radius: 0;
+     font-size: 0.95rem;
+}
+.dropdown-menu .nav-button {
+    padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2); /* Consistent padding */
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus,
+.dropdown-menu .nav-button:hover,
+.dropdown-menu .nav-button:focus {
+    background-color: var(--background-color); /* Use page background for hover */
+    color: var(--primary-color);
+    text-decoration: none;
+    outline: none; /* Remove focus outline inside dropdown */
+}
+.dropdown-menu .dropdown-separator {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: var(--spacing-unit) 0;
+}
+
+
+/* --- General Page Layout --- */
+.content-wrapper {
+    flex: 1;
+    padding: calc(var(--spacing-unit) * 3);
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-section {
+    padding: calc(var(--spacing-unit) * 3);
+    border-radius: 8px;
+    background-color: var(--card-background);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    transition: background-color 0.3s ease;
+}
+.page-section h2, .page-section h3 {
+    margin-top: 0;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: var(--spacing-unit);
+}
+
+.hero-section {
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 2);
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: background-color 0.3s ease;
+}
+
+/* --- Home/Practice Webcam & Output Specifics --- */
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--spacing-unit) * 4);
+}
+
+.webcam-area, .output-area, .feedback-area {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--card-background);
+    padding: calc(var(--spacing-unit) * 2);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.webcam-area h3, .output-area h3, .feedback-area h3 {
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: var(--spacing-unit);
+    margin-top: 0;
+}
+
+#webcam-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: #333; /* Keep dark bg for contrast */
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: var(--spacing-unit) * 2;
+}
+
+#webcam-feed {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+.status-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: var(--light-text); /* Use light text even in light mode for contrast */
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: calc(var(--spacing-unit) * 1.5);
+    border-radius: 0;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-unit);
+    font-size: 0.95rem;
+}
+
+.status-message.error-message {
+    background-color: rgba(217, 83, 79, 0.85);
+}
+.status-message.action-prompt {
+     background-color: rgba(238, 155, 0, 0.85);
+     color: var(--text-color); /* Use text color for better contrast on yellow */
+}
+body.dark-mode .status-message.action-prompt {
+    color: #000; /* Force black text on yellow in dark mode */
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid var(--light-text);
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#start-cam-button, #start-cam-button-practice {
+    display: block;
+    margin: 0 auto;
+}
+
+#output-container, #feedback-container {
+    background-color: var(--background-color); /* Use main bg for contrast */
+    border: 1px solid var(--border-color);
+    padding: calc(var(--spacing-unit) * 2);
+    border-radius: 4px;
+    min-height: 100px;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#gesture-output, #practice-feedback {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    min-height: 2.5rem;
+    margin-bottom: var(--spacing-unit);
+    word-wrap: break-word;
+}
+
+.subtle-text {
+    font-size: 0.9rem;
+    color: var(--muted-text);
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+.demo-buttons {
+    margin-top: var(--spacing-unit);
+    display: flex;
+    gap: var(--spacing-unit);
+    flex-wrap: wrap;
+}
+.demo-buttons button {
+    background-color: var(--accent-color);
+    flex-grow: 1;
+}
+.demo-buttons button:hover, .demo-buttons button:focus {
+     background-color: color-mix(in srgb, var(--accent-color), black 15%); /* Darker accent */
+}
+
+/* --- Learn ASL Section --- */
+.asl-guide ul {
+     list-style: none;
+     padding-left: 0;
+}
+.asl-guide .alphabet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: var(--spacing-unit);
+    margin-top: var(--spacing-unit);
+    padding: var(--spacing-unit);
+    background-color: var(--background-color); /* Match page bg */
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.asl-guide span, .asl-guide li {
+    background-color: var(--card-background); /* Match card bg */
+    padding: calc(var(--spacing-unit) * 1.5);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+     min-height: 60px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+     transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.asl-guide li { margin-bottom: var(--spacing-unit); }
+
+/* --- Auth Page Specific Styles --- */
+.auth-page {
+     padding-top: 0;
+     background-color: var(--background-color);
+}
+.auth-page body { /* Needs to override body selector */
+     padding-top: 0 !important; /* Force no top padding */
+}
+
+.auth-header {
+    background-color: var(--primary-color);
+    padding: calc(var(--spacing-unit)*2);
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+.auth-header h1 a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-size: 1.8rem;
+}
+.auth-header h1 a:hover, .auth-header h1 a:focus {
+     color: var(--accent-color);
+     text-decoration: none;
+}
+
+.auth-container {
+    max-width: 400px;
+    margin: calc(var(--spacing-unit) * 5) auto;
+    padding: calc(var(--spacing-unit) * 4);
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-container h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: calc(var(--spacing-unit) * 3);
+     border-bottom: none;
+     padding-bottom: 0;
+}
+
+.form-group {
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-unit);
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="text"] {
+    width: 100%;
+    padding: calc(var(--spacing-unit) * 1.5);
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
+}
+.form-group input:focus {
+     border-color: var(--primary-color);
+     box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color), transparent 80%);
+     outline: none;
+}
+.form-group small {
+    font-size: 0.85rem;
+    color: var(--muted-text);
+    display: block;
+    margin-top: calc(var(--spacing-unit) * 0.5);
+}
+
+.auth-container button[type="submit"] {
+    width: 100%;
+    padding: calc(var(--spacing-unit) * 1.8);
+    font-size: 1.1rem;
+    margin-top: var(--spacing-unit);
+     background-color: var(--primary-color);
+}
+.auth-container button[type="submit"]:hover,
+.auth-container button[type="submit"]:focus {
+     background-color: var(--secondary-color);
+}
+
+.auth-container p {
+    text-align: center;
+    margin-top: calc(var(--spacing-unit) * 2.5);
+    font-size: 0.95rem;
+}
+.auth-note {
+    font-style: italic;
+    color: var(--muted-text);
+    font-size: 0.9rem;
+    margin-top: calc(var(--spacing-unit) * 3);
+    text-align: center;
+}
+
+/* --- Error/Success Messages --- */
+.error-message, .success-message {
+    border: 1px solid;
+    padding: calc(var(--spacing-unit) * 1.5);
+    border-radius: 4px;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    font-size: 0.95rem;
+    text-align: left;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+.error-message {
+    color: var(--error-text);
+    background-color: var(--error-bg);
+    border-color: var(--error-border);
+}
+.success-message {
+    color: var(--success-text);
+    background-color: var(--success-bg);
+    border-color: var(--success-border);
+}
+
+/* --- Practice Mode --- */
+.practice-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing-unit) * 3);
+    align-items: start;
+}
+
+.practice-controls {
+    text-align: center;
+    background-color: var(--card-background);
+    padding: calc(var(--spacing-unit) * 2);
+    border-radius: 8px;
+     border: 1px solid var(--border-color);
+     transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.practice-controls h3 { margin-bottom: var(--spacing-unit); }
+.target-display {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    background-color: var(--background-color); /* Match page bg */
+    padding: calc(var(--spacing-unit) * 2);
+    border-radius: 4px;
+    margin: var(--spacing-unit) auto;
+    min-height: 120px;
+    min-width: 120px;
+    max-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+#next-gesture-button {
+    margin-top: calc(var(--spacing-unit) * 2);
+}
+
+.feedback-area #practice-feedback {
+     min-height: 50px;
+}
+
+.disclaimer {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--muted-text);
+    background-color: var(--background-color); /* Match page bg */
+    padding: var(--spacing-unit);
+    border-radius: 4px;
+    text-align: center;
+    margin-top: var(--spacing-unit) * 2;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Tutorial / FAQ Page --- */
+.tutorial-steps ol, .tutorial-steps ul,
+.faq-list {
+    padding-left: 0;
+    list-style-position: inside;
+}
+.tutorial-steps ol { margin-left: calc(var(--spacing-unit) * 3); list-style: decimal;}
+.tutorial-steps ul { margin-left: calc(var(--spacing-unit) * 3); list-style: disc; }
+
+.tutorial-steps li {
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+}
+.tutorial-steps li strong { color: var(--primary-color); }
+
+.tutorial-visual {
+    margin-top: var(--spacing-unit);
+    padding: calc(var(--spacing-unit) * 2);
+    background-color: var(--background-color); /* Match page bg */
+    border: 1px dashed var(--border-color);
+    border-radius: 4px;
+    font-style: italic;
+    color: var(--muted-text);
+    text-align: center;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.faq-list details {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: var(--spacing-unit);
+    overflow: hidden;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.faq-list summary {
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--primary-color);
+    list-style: none;
+    position: relative;
+    background-color: var(--background-color); /* Lighter bg for summary */
+    transition: background-color 0.2s ease;
+}
+.faq-list summary:hover, .faq-list summary:focus {
+    background-color: color-mix(in srgb, var(--background-color), black 5%);
+}
+body.dark-mode .faq-list summary:hover,
+body.dark-mode .faq-list summary:focus {
+    background-color: color-mix(in srgb, var(--background-color), white 5%);
+}
+
+.faq-list summary::marker,
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary::after {
+    content: '+';
+    position: absolute;
+    right: calc(var(--spacing-unit) * 2);
+    font-size: 1.4rem;
+    font-weight: normal;
+    transition: transform 0.2s ease-in-out;
+     color: var(--secondary-color);
+}
+.faq-list details[open] summary::after {
+    content: '−';
+     transform: rotate(180deg);
+}
+.faq-list details[open] summary {
+    background-color: color-mix(in srgb, var(--background-color), black 5%);
+     border-bottom: 1px solid var(--border-color);
+}
+body.dark-mode .faq-list details[open] summary {
+     background-color: color-mix(in srgb, var(--background-color), white 5%);
+}
+.faq-list details p {
+    padding: calc(var(--spacing-unit) * 2);
+    margin-bottom: 0;
+    background-color: var(--card-background); /* Ensure content area matches card */
+    border-top: none;
+    transition: background-color 0.3s ease;
+}
+
+/* --- Chatbot --- */
+.chatbot-container {
+    position: fixed;
+    bottom: calc(var(--spacing-unit) * 3);
+    right: calc(var(--spacing-unit) * 3);
+    z-index: 1001;
+}
+
+#chatbot-toggle {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    border: 2px solid var(--light-text);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+#chatbot-toggle svg {
+    width: 28px;
+    height: 28px;
+    transition: transform 0.3s ease;
+}
+#chatbot-toggle[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
+
+#chatbot-toggle:hover, #chatbot-toggle:focus {
+    background-color: var(--secondary-color);
+}
+
+.chatbot-window {
+    position: absolute;
+    bottom: calc(100% + var(--spacing-unit));
+    right: 0;
+    width: 320px;
+    max-height: 450px;
+    background-color: var(--chatbot-bg);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.chatbot-window.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.chatbot-header {
+    background-color: var(--chatbot-header-bg);
+    color: var(--light-text);
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    transition: background-color 0.3s ease;
+}
+
+#chatbot-close {
+    background: none;
+    border: none;
+    color: var(--light-text);
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 0 var(--spacing-unit);
+    opacity: 0.8;
+}
+#chatbot-close:hover, #chatbot-close:focus {
+    opacity: 1;
+    background: none;
+    outline: none;
+    color: var(--accent-color);
+}
+
+.chatbot-messages {
+    flex-grow: 1;
+    padding: calc(var(--spacing-unit) * 2);
+    overflow-y: auto;
+    background-color: var(--chatbot-msg-bg);
+    overscroll-behavior: contain;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+.message {
+    margin-bottom: var(--spacing-unit);
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.5);
+    border-radius: 18px;
+    max-width: 85%;
+    word-wrap: break-word;
+    line-height: 1.4;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bot-message {
+    background-color: var(--card-background); /* Use card bg for bot messages */
+    color: var(--text-color);
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+    margin-right: auto;
+}
+
+.user-message {
+    background-color: var(--chatbot-user-msg-bg);
+    color: var(--light-text);
+    border-bottom-right-radius: 4px;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.chatbot-input-area {
+    display: flex;
+    border-top: 1px solid var(--border-color);
+    padding: var(--spacing-unit);
+    background-color: var(--chatbot-bg); /* Match window background */
+     flex-shrink: 0;
+     transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#chatbot-input {
+    flex-grow: 1;
+    padding: calc(var(--spacing-unit) * 1.2);
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-radius: 20px 0 0 20px;
+    font-size: 0.95rem;
+    outline: none;
+     margin-right: -1px;
+     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
+}
+#chatbot-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary-color), transparent 80%);
+    z-index: 1;
+}
+
+#chatbot-send {
+    border-radius: 0 20px 20px 0;
+    padding: 0 calc(var(--spacing-unit) * 2);
+    font-size: 0.95rem;
+    background-color: var(--primary-color);
+    flex-shrink: 0;
+}
+#chatbot-send:hover, #chatbot-send:focus {
+    background-color: var(--secondary-color);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 2);
+    margin-top: calc(var(--spacing-unit) * 4);
+    background-color: color-mix(in srgb, var(--primary-color), black 60%); /* Darker based on primary */
+    color: color-mix(in srgb, var(--light-text), transparent 30%); /* Muted light text */
+    font-size: 0.9rem;
+    border-top: 3px solid var(--primary-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+footer p { margin-bottom: 0; }
+
+/* --- Accessibility --- */
+/* Consistent Focus styles */
+a:focus, button:focus, input:focus, textarea:focus, select:focus, summary:focus, [tabindex]:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color), transparent 60%);
+}
+/* Special focus for dark mode toggle */
+.dark-mode-toggle:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 1px;
+    box-shadow: none; /* Override general focus shadow */
+}
+/* Navbar focus should be visible */
+.nav-link:focus, .nav-button:focus {
+     color: var(--text-color);
+     background-color: var(--accent-color);
+}
+/* Remove focus styles within dropdowns as they are visually distinct */
+.dropdown-menu a:focus, .dropdown-menu button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* --- Responsive Design (Mobile First Refinements) --- */
+
+/* Mobile (< 768px) - Default styles apply */
+.nav-toggle {
+    display: block;
+}
+.nav-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: var(--primary-color);
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch; /* Stretch items */
+    padding: var(--spacing-unit) 0;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    border-top: 1px solid var(--secondary-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.nav-menu.active {
+    display: flex;
+}
+.nav-menu > li {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+}
+/* Ensure dropdowns also work on mobile */
+.dropdown-menu {
+    position: static; /* Change positioning for mobile */
+    display: none; /* Still hide by default */
+    box-shadow: none;
+    border: none;
+    border-top: 1px dashed var(--secondary-color);
+    margin-top: 0;
+    padding-left: var(--spacing-unit); /* Indent items */
+    background-color: transparent; /* Blend with main mobile menu */
+}
+.dropdown:hover .dropdown-menu, /* Remove hover trigger for mobile */
+.dropdown:focus-within .dropdown-menu { /* Keep focus-within */
+    display: block;
+}
+/* If using JS click toggle: */
+/* .dropdown.active .dropdown-menu { display: block; } */
+
+.dropdown .dropdown-toggle::after {
+    position: absolute; /* Position caret absolutely for alignment */
+    right: calc(var(--spacing-unit) * 3);
+    top: 50%;
+    transform: translateY(-50%);
+}
+.dropdown:hover .dropdown-toggle::after,
+.dropdown:focus-within .dropdown-toggle::after {
+     transform: translateY(-50%) rotate(0deg); /* No rotate on mobile hover */
+}
+/* If using JS click toggle: */
+/* .dropdown.active .dropdown-toggle::after { transform: translateY(-50%) rotate(180deg); } */
+
+.dropdown-menu .dropdown-item,
+.dropdown-menu .nav-button {
+    color: var(--light-text); /* White text for items on mobile */
+    padding-left: calc(var(--spacing-unit) * 4); /* Deeper indent */
+}
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus,
+.dropdown-menu .nav-button:hover,
+.dropdown-menu .nav-button:focus {
+    background-color: var(--secondary-color); /* Hover color */
+}
+
+
+.nav-menu .nav-link, .nav-menu .nav-button {
+    display: block;
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    border-bottom: 1px solid var(--secondary-color);
+    border-radius: 0;
+}
+.nav-menu li:last-child .nav-link,
+.nav-menu li:last-child .nav-button {
+    border-bottom: none;
+}
+.nav-menu .nav-link:hover, .nav-menu .nav-link:focus,
+.nav-menu .nav-button:hover, .nav-menu .nav-button:focus {
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+}
+.nav-menu .nav-link.active {
+     font-weight: bold;
+     background-color: var(--secondary-color);
+}
+.dark-mode-toggle {
+    margin: var(--spacing-unit) auto; /* Center toggle on mobile menu */
+    display: block; /* Ensure it takes block space */
+     width: fit-content;
+}
+
+
+/* Medium screens and up (Tablets >= 768px) */
+@media (min-width: 768px) {
+    .nav-toggle {
+        display: none;
+    }
+    .nav-menu {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        align-items: center; /* Re-align items */
+        width: auto;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        border-top: none;
+    }
+    .nav-menu > li {
+        margin-left: calc(var(--spacing-unit) * 1);
+        width: auto;
+    }
+    .nav-menu .nav-link, .nav-menu .nav-button {
+        display: inline-block;
+        padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 1.5);
+        border-bottom: none;
+         border-radius: 4px;
+    }
+    .nav-menu .nav-button {
+        padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 1.5);
+    }
+    .dark-mode-toggle {
+        margin: 0 0 0 var(--spacing-unit); /* Align right on desktop */
+         display: inline-block;
+         width: auto;
+    }
+    /* Restore desktop dropdown styles */
+    .dropdown .dropdown-toggle::after {
+        position: static;
+        transform: none;
+    }
+     .dropdown:hover .dropdown-toggle::after,
+     .dropdown:focus-within .dropdown-toggle::after {
+        transform: rotate(180deg);
+     }
+
+    .dropdown-menu {
+        display: none; /* Hide again */
+        position: absolute;
+        background-color: var(--card-background);
+        padding: var(--spacing-unit) 0;
+        margin-top: 2px;
+        border-radius: 4px;
+        box-shadow: 0 3px 8px var(--shadow-color);
+        border: 1px solid var(--border-color);
+        padding-left: 0; /* Reset indent */
+    }
+     .dropdown:hover .dropdown-menu,
+     .dropdown:focus-within .dropdown-menu {
+        display: block;
+     }
+    .dropdown-menu .dropdown-item,
+    .dropdown-menu .nav-button {
+        color: var(--text-color); /* Restore text color */
+        padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2); /* Restore padding */
+    }
+     .dropdown-menu .dropdown-item:hover,
+     .dropdown-menu .dropdown-item:focus,
+     .dropdown-menu .nav-button:hover,
+     .dropdown-menu .nav-button:focus {
+        background-color: var(--background-color);
+     }
+
+
+    .content-container {
+         gap: calc(var(--spacing-unit) * 3);
+    }
+    .practice-layout {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "controls webcam"
+            "feedback webcam";
+    }
+    .practice-controls { grid-area: controls; }
+    .webcam-area { grid-area: webcam; }
+    .feedback-area { grid-area: feedback; }
+
+    .chatbot-window {
+        width: 350px;
+    }
+}
+
+/* Large screens (Desktops >= 992px) */
+@media (min-width: 992px) {
+    .content-wrapper {
+        padding: calc(var(--spacing-unit) * 4);
+    }
+     .content-container {
+        flex-wrap: nowrap;
+    }
+    .webcam-area { flex-basis: 55%; }
+    .output-area { flex-basis: 45%; }
+
+     .practice-layout {
+        grid-template-columns: 220px 1fr 280px;
+        grid-template-areas: "controls webcam feedback";
+         gap: calc(var(--spacing-unit) * 4);
+    }
+}
+
+/* Extra Large screens (Desktops >= 1200px) */
+@media (min-width: 1200px) {
+     .nav-menu > li {
+         margin-left: calc(var(--spacing-unit) * 2);
+     }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .spinner {
+    animation: none;
+    border-width: 2px;
+  }
+   .faq-list summary::after {
+        transition: none;
+        transform: none !important;
+   }
+   .faq-list details[open] summary::after {
+       content: '−';
+   }
+   #chatbot-toggle svg {
+        transition: none;
+        transform: none !important;
+   }
+    .dropdown .dropdown-toggle::after {
+         transition: none;
+         transform: none !important;
+    }
+     .dropdown:hover .dropdown-toggle::after,
+     .dropdown:focus-within .dropdown-toggle::after {
+        content: ' ▼'; /* Static caret */
+     }
+    body.dark-mode .dropdown:hover .dropdown-toggle::after,
+    body.dark-mode .dropdown:focus-within .dropdown-toggle::after {
+        content: ' ▼'; /* Static caret */
+     }
+
+     /* Ensure caret flips instantly if JS is used for active state */
+     /* .dropdown.active .dropdown-toggle::after { transform: rotate(180deg) !important; } */
+}
+/* --- Login Prompt Sections --- */
+.login-prompt-section {
+    padding: calc(var(--spacing-unit) * 4);
+    margin: calc(var(--spacing-unit) * 3) 0; /* Match section margins */
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    text-align: center;
+    border: 1px dashed var(--accent-color); /* Dashed border to stand out */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-prompt-section h2 {
+    color: var(--primary-color);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    border-bottom: none; /* No underline for this heading */
+}
+
+.login-prompt-section p {
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    font-size: 1.1rem;
+    color: var(--muted-text);
+}
+
+.login-prompt-section .prompt-actions {
+    display: flex;
+    justify-content: center;
+    gap: calc(var(--spacing-unit) * 2);
+    flex-wrap: wrap;
+}
+
+.login-prompt-section .prompt-actions a {
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    min-width: 120px;
+}
+
+.login-prompt-section .prompt-actions a:hover,
+.login-prompt-section .prompt-actions a:focus {
+    background-color: var(--secondary-color);
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+/* Optional: Slightly different style for Register link */
+.login-prompt-section .prompt-actions a[href="register.html"] {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+.login-prompt-section .prompt-actions a[href="register.html"]:hover,
+.login-prompt-section .prompt-actions a[href="register.html"]:focus {
+     background-color: color-mix(in srgb, var(--primary-color), transparent 90%);
+     border-color: var(--secondary-color);
+}
+
+/* --- Style the button inside webcam permission prompt --- */
+.status-message.action-prompt button {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--primary-color); /* Or choose another color */
+    color: var(--light-text);
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+    font-family: inherit;
+    line-height: 1;
+    margin-left: 10px; /* Add space */
+}
+.status-message.action-prompt button:hover,
+.status-message.action-prompt button:focus {
+     background-color: var(--secondary-color);
+     outline: 1px solid var(--accent-color);
+     outline-offset: 1px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to Signify to access your account features.">
+    <title>Login - Signify</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>">
+</head>
+<body class="auth-page"> <!-- Specific class for auth pages -->
+
+    <!-- Simplified Auth Header -->
+    <header class="auth-header">
+         <h1><a href="index.html">Signify 👋</a></h1>
+         <!-- Optional: Dark mode toggle also on auth pages -->
+         <button id="dark-mode-toggle" class="dark-mode-toggle" aria-pressed="false" style="position: absolute; top: 15px; right: 15px;">🌙 Dark Mode</button>
+    </header>
+    <!-- End Auth Header -->
+
+    <!-- ======= Main Content ======= -->
+    <main class="auth-container">
+        <h2>Login</h2>
+        <form id="login-form" novalidate>
+            <div id="login-error" class="error-message" style="display: none;" role="alert"></div>
+            <div class="form-group">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" name="email" required aria-required="true" autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" required aria-required="true" autocomplete="current-password">
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="register.html">Register here</a></p>
+        <p class="auth-note">Note: This is a demonstration login and uses insecure simulation.</p>
+    </main>
+    <!-- End Main Content -->
+
+    <!-- ======= Footer ======= -->
+    <footer>
+        <p>&copy; <span id="current-year"></span> Signify Project. All rights reserved.</p>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- ======= Scripts ======= -->
+    <!-- Auth needs to load first on auth pages if it handles elements here -->
+    <script src="auth.js" defer></script>
+    <!-- Script handles dark mode toggle & footer year -->
+    <script src="script.js" defer></script>
+    <!-- End Scripts -->
+</body>
+</html

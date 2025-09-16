@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="Learn the basics of American Sign Language (ASL) alphabet and common phrases with the Signify guide.">
+    <title>Learn ASL Basics - Signify</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>">
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="index.html">Signify 👋</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="learn.html" class="nav-link">Learn ASL</a></li>
+                <li><a href="practice.html" class="nav-link">Practice</a></li>
+                <li><a href="tutorial.html" class="nav-link">How it Works</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <!-- Account Dropdown -->
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="account-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Account</a>
+                    <ul class="dropdown-menu" aria-labelledby="account-dropdown-toggle">
+                        <li id="login-dropdown-item"><a href="login.html" class="dropdown-item">Login</a></li>
+                        <li id="register-dropdown-item"><a href="register.html" class="dropdown-item">Register</a></li>
+                        <li id="logout-dropdown-item" style="display: none;"><button id="logout-button" class="nav-button dropdown-item">Logout</button></li>
+                    </ul>
+                </li>
+                 <li> <!-- Dark Mode Toggle Button -->
+                    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-pressed="false">🌙 Dark Mode</button>
+                </li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        </nav>
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Main Content ======= -->
+    <main class="content-wrapper">
+        <h1>Learn ASL Basics</h1>
+        <p>Explore the American Sign Language alphabet and common phrases. Click items for descriptions (via chatbot later or added text).</p>
+
+        <section class="page-section asl-guide">
+            <h2>ASL Alphabet (Fingerspelling)</h2>
+            <p>These represent the letters of the English alphabet.</p>
+            <div class="alphabet-grid">
+                 <!-- Add tooltips or link to chatbot query -->
+                <span title="ASL Letter A">A</span> <span title="ASL Letter B">B</span>
+                <span title="ASL Letter C">C</span> <span title="ASL Letter D">D</span>
+                <span title="ASL Letter E">E</span> <span title="ASL Letter F">F</span>
+                <span title="ASL Letter G">G</span> <span title="ASL Letter H">H</span>
+                <span title="ASL Letter I">I</span> <span title="ASL Letter J">J</span>
+                <span title="ASL Letter K">K</span> <span title="ASL Letter L">L</span>
+                <span title="ASL Letter M">M</span> <span title="ASL Letter N">N</span>
+                <span title="ASL Letter O">O</span> <span title="ASL Letter P">P</span>
+                <span title="ASL Letter Q">Q</span> <span title="ASL Letter R">R</span>
+                <span title="ASL Letter S">S</span> <span title="ASL Letter T">T</span>
+                <span title="ASL Letter U">U</span> <span title="ASL Letter V">V</span>
+                <span title="ASL Letter W">W</span> <span title="ASL Letter X">X</span>
+                <span title="ASL Letter Y">Y</span> <span title="ASL Letter Z">Z</span>
+            </div>
+             <p class="subtle-text">Note: Actual signs require specific handshapes and sometimes movement. Visual aids (images/videos) are recommended for learning.</p>
+        </section>
+
+         <section class="page-section asl-guide">
+             <h2>Common Phrases & Words</h2>
+             <p>Some frequently used signs in ASL communication.</p>
+             <ul>
+                <li>Hello / Hi / Goodbye 👋</li>
+                <li>Thank You 🙏</li>
+                <li>Please</li>
+                <li>Yes ✅</li>
+                <li>No ❌</li>
+                <li>Eat / Food</li>
+                <li>Drink</li>
+                <li>Help</li>
+                <li>More</li>
+                <li>My Name Is...</li>
+                <li>I Love You 🤟</li>
+                <li>Okay 👌</li>
+                 <li>Stop ✋</li>
+                 <li>Good Job 👍</li>
+             </ul>
+              <p class="subtle-text">These represent the concepts. Precise execution may vary. Ask the chatbot "What does [phrase] mean?" for descriptions.</p>
+         </section>
+
+         <section class="page-section">
+            <h2>Learning Resources (External)</h2>
+            <p>Here are some excellent resources for learning ASL more thoroughly:</p>
+            <ul>
+                <li><a href="https://www.lifeprint.com/" target="_blank" rel="noopener noreferrer">ASL University (Lifeprint)</a> - Extensive lessons and dictionary.</li>
+                <li><a href="https://www.handspeak.com/" target="_blank" rel="noopener noreferrer">Handspeak</a> - ASL dictionary and resources.</li>
+                <li><a href="https://www.signingsavvy.com/" target="_blank" rel="noopener noreferrer">Signing Savvy</a> - Sign language dictionary with video examples.</li>
+            </ul>
+         </section>
+    </main>
+    <!-- End Main Content -->
+
+    <!-- ======= Chatbot ======= -->
+    <aside class="chatbot-container">
+        <button id="chatbot-toggle" aria-label="Toggle Chatbot" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+        </button>
+        <div id="chatbot-window" class="chatbot-window" role="log" aria-live="polite">
+            <div class="chatbot-header">
+                <span>Signify Assistant</span>
+                <button id="chatbot-close" aria-label="Close Chatbot">&times;</button>
+            </div>
+            <div id="chatbot-messages" class="chatbot-messages">
+                <div class="message bot-message">Learning ASL? Ask me "What does B mean?" or "Meaning of Thank You" to get descriptions from our library!</div>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbot-input" placeholder="Ask about a sign..." aria-label="Chat input">
+                <button id="chatbot-send" aria-label="Send message">Send</button>
+            </div>
+        </div>
+    </aside>
+    <!-- End Chatbot -->
+
+    <!-- ======= Footer ======= -->
+    <footer>
+        <p>&copy; <span id="current-year"></span> Signify Project. All rights reserved.</p>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- ======= Scripts ======= -->
+    <script src="auth.js" defer></script>
+    <script src="script.js" defer></script>
+    <!-- End Scripts -->
+</body>
+</html>

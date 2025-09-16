@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="Learn about the Signify project, its mission, technology, and team.">
+    <title>About - Signify</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>">
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="index.html">Signify 👋</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="learn.html" class="nav-link">Learn ASL</a></li>
+                <li><a href="practice.html" class="nav-link">Practice</a></li>
+                <li><a href="tutorial.html" class="nav-link">How it Works</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <!-- Account Dropdown -->
+                <li class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="account-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Account</a>
+                    <ul class="dropdown-menu" aria-labelledby="account-dropdown-toggle">
+                        <li id="login-dropdown-item"><a href="login.html" class="dropdown-item">Login</a></li>
+                        <li id="register-dropdown-item"><a href="register.html" class="dropdown-item">Register</a></li>
+                        <li id="logout-dropdown-item" style="display: none;"><button id="logout-button" class="nav-button dropdown-item">Logout</button></li>
+                    </ul>
+                </li>
+                 <li> <!-- Dark Mode Toggle Button -->
+                    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-pressed="false">🌙 Dark Mode</button>
+                </li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+        </nav>
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Main Content ======= -->
+    <main class="content-wrapper">
+        <h1>About Signify</h1>
+
+        <section class="page-section">
+            <h2>Mission</h2>
+            <p>Our mission is to leverage the power of computer vision and web technology to create intuitive and accessible communication tools. We aim to bridge communication gaps for the deaf and hard-of-hearing community, facilitate sign language learning, and foster greater understanding through technology.</p>
+        </section>
+
+         <section class="page-section">
+            <h2>Technology Stack</h2>
+            <p>Signify utilizes a modern stack for real-time performance in the browser:</p>
+            <ul>
+                <li><strong>Frontend Framework:</strong> HTML5, CSS3, Vanilla JavaScript (ES6+)</li>
+                <li><strong>Computer Vision:</strong> <a href="https://www.tensorflow.org/js" target="_blank" rel="noopener noreferrer">TensorFlow.js</a> with pre-trained models and potentially <a href="https://developers.google.com/mediapipe" target="_blank" rel="noopener noreferrer">Google MediaPipe</a> for hand landmark detection (core ML integration is key).</li>
+                 <li><strong>User Interface:</strong> Responsive design principles (Flexbox/Grid), focus on accessibility (ARIA attributes, keyboard navigation), Dark/Light mode support.</li>
+                 <li><strong>Chatbot:</strong> Custom JavaScript logic with predefined responses.</li>
+                 <li><strong>Authentication (Simulation):</strong> Client-side JavaScript using browser `localStorage` (demonstration only, **not secure**).</li>
+            </ul>
+        </section>
+
+        <section class="page-section">
+            <h2>The Team</h2>
+            <p>(This section would describe the individuals or group behind the Signify project. You can list names, roles, or a brief team bio here.)</p>
+            <p>We are passionate about creating impactful tools and welcome collaboration and feedback.</p>
+        </section>
+
+         <section class="page-section">
+            <h2>Development Status & Disclaimer</h2>
+            <p>Signify is currently under active development. Key features like comprehensive gesture recognition and secure user accounts are part of our roadmap.</p>
+             <p><strong>Disclaimer:</strong> The gesture recognition performance may vary based on lighting, camera quality, and gesture clarity. The current login/registration system is for demonstration purposes ONLY and should not be used with real sensitive data.</p>
+        </section>
+    </main>
+    <!-- End Main Content -->
+
+    <!-- ======= Chatbot ======= -->
+    <aside class="chatbot-container">
+        <button id="chatbot-toggle" aria-label="Toggle Chatbot" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+        </button>
+        <div id="chatbot-window" class="chatbot-window" role="log" aria-live="polite">
+            <div class="chatbot-header">
+                <span>Signify Assistant</span>
+                <button id="chatbot-close" aria-label="Close Chatbot">&times;</button>
+            </div>
+            <div id="chatbot-messages" class="chatbot-messages">
+                 <div class="message bot-message">Exploring the About page! Ask me anything about Signify's mission or technology, or navigate elsewhere like 'Show Home'.</div>
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbot-input" placeholder="Ask a question..." aria-label="Chat input">
+                <button id="chatbot-send" aria-label="Send message">Send</button>
+            </div>
+        </div>
+    </aside>
+    <!-- End Chatbot -->
+
+    <!-- ======= Footer ======= -->
+    <footer>
+        <p>&copy; <span id="current-year"></span> Signify Project. All rights reserved.</p>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- ======= Scripts ======= -->
+    <script src="auth.js" defer></script>
+    <script src="script.js" defer></script>
+    <!-- End Scripts -->
+</body>
+</html>
